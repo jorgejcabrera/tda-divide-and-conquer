@@ -17,7 +17,7 @@ class TestCreatePlayersRanking(TestCase):
         ranking = use_case.execute_by_brute_force(players_record)
 
         # then
-        self.then_the_expected_ranking_for_instance_one_was_create(ranking)
+        self.then_the_expected_ranking_for_instance_one_was_created(ranking)
 
     # A,5|B,1|C,4|D,3|E,2|F,8|G,6|H,7
     def test_using_brute_force_with_instance_two(self):
@@ -29,9 +29,9 @@ class TestCreatePlayersRanking(TestCase):
         ranking = use_case.execute_by_brute_force(players_record)
 
         # then
-        self.then_the_expected_ranking_for_instance_two_was_create(ranking)
+        self.then_the_expected_ranking_for_instance_two_was_created(ranking)
 
-    def then_the_expected_ranking_for_instance_two_was_create(self, ranking):
+    def then_the_expected_ranking_for_instance_two_was_created(self, ranking):
         self.assertTrue(Rank(player_name="A", rank=1, improvement=4) == ranking.get_rank(1))
         self.assertTrue(Rank(player_name="B", rank=2, improvement=0) == ranking.get_rank(2))
         self.assertTrue(Rank(player_name="C", rank=3, improvement=1) == ranking.get_rank(3))
@@ -41,7 +41,7 @@ class TestCreatePlayersRanking(TestCase):
         self.assertTrue(Rank(player_name="G", rank=7, improvement=0) == ranking.get_rank(7))
         self.assertTrue(Rank(player_name="H", rank=8, improvement=0) == ranking.get_rank(8))
 
-    def then_the_expected_ranking_for_instance_one_was_create(self, ranking):
+    def then_the_expected_ranking_for_instance_one_was_created(self, ranking):
         self.assertTrue(Rank(player_name="A", rank=1, improvement=1) == ranking.get_rank(1))
         self.assertTrue(Rank(player_name="B", rank=2, improvement=1) == ranking.get_rank(2))
         self.assertTrue(Rank(player_name="C", rank=3, improvement=0) == ranking.get_rank(3))
