@@ -5,46 +5,38 @@ class SortService:
 
     def all_improvements_by_previous_position(self, lista):
         if len(lista) > 1:
-            medio = len(lista) // 2
-            izquierda = lista[:medio]
-            derecha = lista[medio:]
-            print(izquierda, '*' * 5, derecha)
+            half = len(lista) // 2
+            left = lista[:half]
+            right = lista[half:]
 
-            # Llamada recursiva en cada mitad.
-            self.all_improvements_by_previous_position(izquierda)
-            self.all_improvements_by_previous_position(derecha)
+            self.all_improvements_by_previous_position(left)
+            self.all_improvements_by_previous_position(right)
 
-            # Iteradores para recorrer las dos sublistas
             i = 0
             j = 0
-            # Iterador de la lista principal
             k = 0
 
-            while i < len(izquierda) and j < len(derecha):
-                if izquierda[i] < derecha[j]:
-                    lista[k] = izquierda[i]
+            while i < len(left) and j < len(right):
+                if left[i] < right[j]:
+                    lista[k] = left[i]
                     i += 1
                 else:
-                    if izquierda[i] in self.movements_to_right:
-                        self.movements_to_right[izquierda[i]] += 1
+                    if left[i] in self.movements_to_right:
+                        self.movements_to_right[left[i]] += 1
                     else:
-                        self.movements_to_right[izquierda[i]] = 1
-                    lista[k] = derecha[j]
+                        self.movements_to_right[left[i]] = 1
+                    lista[k] = right[j]
                     j += 1
                 k += 1
 
-            while i < len(izquierda):
-                lista[k] = izquierda[i]
+            while i < len(left):
+                lista[k] = left[i]
                 i += 1
                 k += 1
 
-            while j < len(derecha):
-                lista[k] = derecha[j]
+            while j < len(right):
+                lista[k] = right[j]
                 j += 1
                 k += 1
-
-            print(f'izquierda {izquierda}, derecha {derecha}')
-            print(lista)
-            print('-' * 50)
 
         return self.movements_to_right
