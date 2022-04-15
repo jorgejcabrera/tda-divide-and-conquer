@@ -28,9 +28,12 @@ class CreatePlayersRanking:
     def execute_by_brute_force(self, players_record):
         rankings = Ranking()
         for index, player_record in enumerate(players_record):
-            rank = Rank(player_name=player_record.name, rank=index + 1, improvement=0)
+            rank = Rank(
+                player_name=player_record.name,
+                rank=index + 1,
+                improvement=0
+            )
             if has_improve_his_rank(index, player_record):
-                improvement = amount_of_defeated_players(index, players_record, player_record)
-                rank.improvement = improvement
+                rank.improvement = amount_of_defeated_players(index, players_record, player_record)
             rankings.add(rank)
         return rankings
