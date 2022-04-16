@@ -2,10 +2,6 @@ from rank.rank import Rank
 from rank.ranking import Ranking
 
 
-def has_improve_his_rank(index, player):
-    return index < player.previous_position - 1
-
-
 def amount_of_defeated_players(index, players_record):
     defeated_players = 0
     player = players_record[index]
