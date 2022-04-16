@@ -116,6 +116,18 @@ class TestCreatePlayersRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_five_was_created(ranking)
 
+    # A,3|B,4|C,2
+    def test_using_divide_and_conquer_strategy_with_instance_five(self):
+        # given
+        players_record = instance_five()
+        use_case = CreatePlayersRanking()
+
+        # when
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
+
+        # then
+        self.then_the_expected_ranking_for_instance_five_was_created(ranking)
+
     def then_the_expected_ranking_for_instance_two_was_created(self, ranking):
         self.assertTrue(Rank(player_name="A", position=1, improvement=4) == ranking.get_rank(1))
         self.assertTrue(Rank(player_name="B", position=2, improvement=0) == ranking.get_rank(2))
