@@ -17,10 +17,10 @@ class Ranking:
             self.ranks[player_name] = Rank(
                 player_name=player_name,
                 position=position,
-                improvement=0
+                defeated_players=0
             )
 
-    def improve_player(self, player_name, position):
+    def defeat_a_player(self, player_name, position):
         if player_name in self.ranks:
             rank = self.ranks.get(player_name)
             rank.improve()
@@ -28,11 +28,11 @@ class Ranking:
             self.ranks[player_name] = Rank(
                 player_name=player_name,
                 position=position,
-                improvement=1
+                defeated_players=1
             )
 
-    def get_improvements_of(self, player_name):
-        return self.ranks[player_name].improvement
+    def defeated_players_of(self, player_name):
+        return self.ranks[player_name].defeated_players
 
     def get_rank(self, index):
         for rank in self.ranks.items():

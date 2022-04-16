@@ -31,10 +31,10 @@ class CreatePlayersRanking:
             rank = Rank(
                 player_name=player_record.name,
                 position=index + 1,
-                improvement=0
+                defeated_players=0
             )
             if has_improve_his_rank(index, player_record):
-                rank.improvement = amount_of_defeated_players(index, players_record, player_record)
+                rank.defeated_players = amount_of_defeated_players(index, players_record, player_record)
             rankings.add(rank)
         return rankings
 
@@ -63,7 +63,7 @@ class CreatePlayersRanking:
                     i += 1
                 else:
                     for player in left[i:]:
-                        self.ranking.improve_player(player.name, position)
+                        self.ranking.defeat_a_player(player.name, position)
                         position += 1
                     self.ranking.add_if_not_exist(right[j].name, position)
                     position += 1
