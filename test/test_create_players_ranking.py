@@ -44,7 +44,6 @@ class TestCreatePlayersRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_two_was_created(ranking)
 
-    # TODO fix this test
     # A,5|B,1|C,4|D,3|E,2|F,8|G,6|H,7
     def test_using_divide_and_conquer_with_instance_two(self):
         # given
