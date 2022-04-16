@@ -9,6 +9,9 @@ class Ranking:
     def add(self, rank):
         self.ranks[rank.player_name] = rank
 
+    def exist(self, player_name):
+        return player_name in self.ranks
+
     def add_if_not_exist(self, player_name, position):
         if player_name not in self.ranks:
             self.ranks[player_name] = Rank(

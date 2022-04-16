@@ -154,11 +154,12 @@ class TestCreatePlayersRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_six_was_created(ranking)
 
+    # A,5|B,2|C,4|D,3|E,1
     def then_the_expected_ranking_for_instance_six_was_created(self, ranking):
         self.assertTrue(Rank(player_name="A", position=1, improvement=4) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, improvement=0) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, improvement=1) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, improvement=0) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="B", position=2, improvement=1) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, improvement=2) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, improvement=1) == ranking.get_rank(4))
         self.assertTrue(Rank(player_name="E", position=5, improvement=0) == ranking.get_rank(5))
 
     def then_the_expected_ranking_for_instance_two_was_created(self, ranking):
