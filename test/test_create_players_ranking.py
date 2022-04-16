@@ -76,7 +76,7 @@ class TestCreatePlayersRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_brute_force(players_record)
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_three_was_created(ranking)
@@ -88,7 +88,7 @@ class TestCreatePlayersRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_brute_force(players_record)
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_four_was_created(ranking)

@@ -54,12 +54,12 @@ class CreatePlayersRanking:
             j = 0
             k = 0
 
-            offset = offset + half
+            offset = offset + 1
             while i < len(left) and j < len(right):
                 if left[i].previous_position < right[j].previous_position:
                     lista[k] = left[i]
                     self.ranking.add_if_not_exist(left[i].name, offset)
-                    offset = offset + 1
+                    offset += 1
                     i += 1
                 else:
                     self.ranking.improve_player(left[i].name, offset)
