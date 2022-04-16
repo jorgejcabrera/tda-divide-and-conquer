@@ -141,7 +141,6 @@ class TestCreatePlayersRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_six_was_created(ranking)
 
-    # TODO fix this test
     # A,5|B,2|C,4|D,3|E,1
     def test_using_divide_and_conquer_strategy_with_instance_six(self):
         # given
@@ -154,45 +153,44 @@ class TestCreatePlayersRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_six_was_created(ranking)
 
-    # A,5|B,2|C,4|D,3|E,1
     def then_the_expected_ranking_for_instance_six_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=4) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=1) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=2) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, defeated_players=1) == ranking.get_rank(4))
-        self.assertTrue(Rank(player_name="E", position=5, defeated_players=0) == ranking.get_rank(5))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=4) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=1) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=2) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, defeated_rivals=1) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="E", position=5, defeated_rivals=0) == ranking.get_rank(5))
 
     def then_the_expected_ranking_for_instance_two_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=4) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=0) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=1) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, defeated_players=0) == ranking.get_rank(4))
-        self.assertTrue(Rank(player_name="E", position=5, defeated_players=0) == ranking.get_rank(5))
-        self.assertTrue(Rank(player_name="F", position=6, defeated_players=2) == ranking.get_rank(6))
-        self.assertTrue(Rank(player_name="G", position=7, defeated_players=0) == ranking.get_rank(7))
-        self.assertTrue(Rank(player_name="H", position=8, defeated_players=0) == ranking.get_rank(8))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=4) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=0) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=2) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, defeated_rivals=1) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="E", position=5, defeated_rivals=0) == ranking.get_rank(5))
+        self.assertTrue(Rank(player_name="F", position=6, defeated_rivals=2) == ranking.get_rank(6))
+        self.assertTrue(Rank(player_name="G", position=7, defeated_rivals=0) == ranking.get_rank(7))
+        self.assertTrue(Rank(player_name="H", position=8, defeated_rivals=0) == ranking.get_rank(8))
 
     def then_the_expected_ranking_for_instance_one_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=1) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=1) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=0) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, defeated_players=2) == ranking.get_rank(4))
-        self.assertTrue(Rank(player_name="E", position=5, defeated_players=1) == ranking.get_rank(5))
-        self.assertTrue(Rank(player_name="F", position=6, defeated_players=0) == ranking.get_rank(6))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=1) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=1) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=0) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, defeated_rivals=2) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="E", position=5, defeated_rivals=1) == ranking.get_rank(5))
+        self.assertTrue(Rank(player_name="F", position=6, defeated_rivals=0) == ranking.get_rank(6))
 
     def then_the_expected_ranking_for_instance_three_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=1) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=0) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=1) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, defeated_players=0) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=1) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=0) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=1) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, defeated_rivals=0) == ranking.get_rank(4))
 
     def then_the_expected_ranking_for_instance_four_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=3) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=0) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=0) == ranking.get_rank(3))
-        self.assertTrue(Rank(player_name="D", position=4, defeated_players=0) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=3) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=0) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=0) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, defeated_rivals=0) == ranking.get_rank(4))
 
     def then_the_expected_ranking_for_instance_five_was_created(self, ranking):
-        self.assertTrue(Rank(player_name="A", position=1, defeated_players=1) == ranking.get_rank(1))
-        self.assertTrue(Rank(player_name="B", position=2, defeated_players=1) == ranking.get_rank(2))
-        self.assertTrue(Rank(player_name="C", position=3, defeated_players=0) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=1) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=1) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=0) == ranking.get_rank(3))

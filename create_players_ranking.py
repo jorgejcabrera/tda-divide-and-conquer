@@ -6,15 +6,14 @@ def has_improve_his_rank(index, player):
     return index < player.previous_position - 1
 
 
-def amount_of_defeated_players(index, players_record, player_record):
-    next_index = index + 1
-    improvement = 0
-    while next_index <= player_record.previous_position - 1 and len(players_record) > next_index:
-        other_player_record = players_record[next_index]
-        if other_player_record.previous_position < player_record.previous_position:
-            improvement += 1
-        next_index += 1
-    return improvement
+def amount_of_defeated_players(index, players_record):
+    defeated_players = 0
+    player = players_record[index]
+    rivals = players_record[index:]
+    for rival in rivals:
+        if player.previous_position > rival.previous_position:
+            defeated_players += 1
+    return defeated_players
 
 
 class CreatePlayersRanking:
@@ -31,10 +30,9 @@ class CreatePlayersRanking:
             rank = Rank(
                 player_name=player_record.name,
                 position=index + 1,
-                defeated_players=0
+                defeated_rivals=0
             )
-            if has_improve_his_rank(index, player_record):
-                rank.defeated_players = amount_of_defeated_players(index, players_record, player_record)
+            rank.defeated_rivals = amount_of_defeated_players(index, players_record)
             rankings.add(rank)
         return rankings
 
@@ -63,7 +61,7 @@ class CreatePlayersRanking:
                     i += 1
                 else:
                     for player in left[i:]:
-                        self.ranking.defeat_a_player(player.name, position)
+                        self.ranking.defeat_a_rival(player.name, position)
                         position += 1
                     self.ranking.add_if_not_exist(right[j].name, position)
                     position += 1
