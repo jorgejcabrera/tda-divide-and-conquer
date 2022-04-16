@@ -3,15 +3,15 @@ from rank.ranking import Ranking
 
 
 def has_improve_his_rank(index, player):
-    return index < player.previous_rank - 1
+    return index < player.previous_position - 1
 
 
 def amount_of_defeated_players(index, players_record, player_record):
     next_index = index + 1
     improvement = 0
-    while next_index <= player_record.previous_rank - 1 and len(players_record) > next_index:
+    while next_index <= player_record.previous_position - 1 and len(players_record) > next_index:
         other_player_record = players_record[next_index]
-        if other_player_record.previous_rank < player_record.previous_rank:
+        if other_player_record.previous_position < player_record.previous_position:
             improvement += 1
         next_index += 1
     return improvement
@@ -56,7 +56,7 @@ class CreatePlayersRanking:
 
             offset = offset + half
             while i < len(left) and j < len(right):
-                if left[i].previous_rank < right[j].previous_rank:
+                if left[i].previous_position < right[j].previous_position:
                     lista[k] = left[i]
                     self.ranking.add_if_not_exist(left[i].name, offset)
                     offset = offset + 1

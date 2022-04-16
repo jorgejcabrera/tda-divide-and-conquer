@@ -6,7 +6,7 @@ class Rank:
         self.improvement = improvement
 
     def __repr__(self) -> str:
-        return f'[name:{self.player_name},rank:{self.position},improvement:{self.improvement}]'
+        return f'[name:{self.player_name},position:{self.position},improvement:{self.improvement}]'
 
     def improve(self):
         self.improvement += 1
