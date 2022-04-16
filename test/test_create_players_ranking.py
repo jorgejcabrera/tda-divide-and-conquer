@@ -2,7 +2,8 @@ from unittest import TestCase
 
 from create_players_ranking import CreatePlayersRanking
 from rank.rank import Rank
-from test.player_record_factory import instance_one, instance_two, instance_three, instance_four, instance_five
+from test.player_record_factory import instance_one, instance_two, instance_three, instance_four, instance_five, \
+    instance_six
 
 
 class TestCreatePlayersRanking(TestCase):
@@ -127,6 +128,38 @@ class TestCreatePlayersRanking(TestCase):
 
         # then
         self.then_the_expected_ranking_for_instance_five_was_created(ranking)
+
+    # A,5|B,2|C,4|D,3|E,1
+    def test_using_brute_force_strategy_with_instance_six(self):
+        # given
+        players_record = instance_six()
+        use_case = CreatePlayersRanking()
+
+        # when
+        ranking = use_case.execute_by_brute_force(players_record)
+
+        # then
+        self.then_the_expected_ranking_for_instance_six_was_created(ranking)
+
+    # TODO fix this test
+    # A,5|B,2|C,4|D,3|E,1
+    def test_using_divide_and_conquer_strategy_with_instance_six(self):
+        # given
+        players_record = instance_six()
+        use_case = CreatePlayersRanking()
+
+        # when
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
+
+        # then
+        self.then_the_expected_ranking_for_instance_six_was_created(ranking)
+
+    def then_the_expected_ranking_for_instance_six_was_created(self, ranking):
+        self.assertTrue(Rank(player_name="A", position=1, improvement=4) == ranking.get_rank(1))
+        self.assertTrue(Rank(player_name="B", position=2, improvement=0) == ranking.get_rank(2))
+        self.assertTrue(Rank(player_name="C", position=3, improvement=1) == ranking.get_rank(3))
+        self.assertTrue(Rank(player_name="D", position=4, improvement=0) == ranking.get_rank(4))
+        self.assertTrue(Rank(player_name="E", position=5, improvement=0) == ranking.get_rank(5))
 
     def then_the_expected_ranking_for_instance_two_was_created(self, ranking):
         self.assertTrue(Rank(player_name="A", position=1, improvement=4) == ranking.get_rank(1))
