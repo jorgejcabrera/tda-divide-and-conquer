@@ -20,7 +20,7 @@ def amount_of_defeated_players(index, players_record, player_record):
 class CreatePlayersRanking:
 
     def __init__(self):
-        return
+        self.ranking = Ranking()
 
     # #
     # complejidad temporal de O(n^2)
@@ -30,10 +30,56 @@ class CreatePlayersRanking:
         for index, player_record in enumerate(players_record):
             rank = Rank(
                 player_name=player_record.name,
-                rank=index + 1,
+                position=index + 1,
                 improvement=0
             )
             if has_improve_his_rank(index, player_record):
                 rank.improvement = amount_of_defeated_players(index, players_record, player_record)
             rankings.add(rank)
         return rankings
+
+    def execute_by_divide_and_conquer(self, lista):
+        return self.divide_and_conquer(lista, 0)
+
+    def divide_and_conquer(self, lista, offset):
+        if len(lista) > 1:
+            half = len(lista) // 2
+            left = lista[:half]
+            right = lista[half:]
+
+            self.divide_and_conquer(left, offset)
+            self.divide_and_conquer(right, offset + half)
+
+            i = 0
+            j = 0
+            k = 0
+
+            offset = offset + half
+            while i < len(left) and j < len(right):
+                if left[i].previous_rank < right[j].previous_rank:
+                    lista[k] = left[i]
+                    self.ranking.add_if_not_exist(left[i].name, offset)
+                    offset = offset + 1
+                    i += 1
+                else:
+                    self.ranking.improve_player(left[i].name, offset)
+                    offset = offset + 1
+                    lista[k] = right[j]
+                    j += 1
+                k += 1
+
+            while i < len(left):
+                lista[k] = left[i]
+                self.ranking.add_if_not_exist(left[i].name, offset)
+                offset = offset + 1
+                i += 1
+                k += 1
+
+            while j < len(right):
+                lista[k] = right[j]
+                self.ranking.add_if_not_exist(right[j].name, offset)
+                offset = offset + 1
+                j += 1
+                k += 1
+
+        return self.ranking

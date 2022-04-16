@@ -1,17 +1,20 @@
 class Rank:
 
-    def __init__(self, player_name, rank, improvement):
+    def __init__(self, player_name, position, improvement):
         self.player_name = player_name
-        self.rank = rank
+        self.position = position
         self.improvement = improvement
 
     def __repr__(self) -> str:
-        return f'[name:{self.player_name},rank:{self.rank},improvement:{self.improvement}]'
+        return f'[name:{self.player_name},rank:{self.position},improvement:{self.improvement}]'
+
+    def improve(self):
+        self.improvement += 1
 
     def __eq__(self, other):
         return (
                 self.__class__ == other.__class__ and
                 self.player_name == other.player_name and
-                self.rank == other.rank and
+                self.position == other.position and
                 self.improvement == other.improvement
         )
