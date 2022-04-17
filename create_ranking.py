@@ -68,9 +68,17 @@ class CreatePlayersRanking:
                     position = self.add_if_not_exist_and_return_position(left[i], position)
                     i += 1
                 else:
+                    # TODO move the for loop to a method with this responsabilitie
                     for player in left[i:]:
-                        self.ranking.defeat_a_rival(player.name, position)
-                        position += 1
+                        if self.ranking.exist(player.name):
+                            self.ranking.increase_wins_of(player.name)
+                        else:
+                            self.ranking.add(Rank(
+                                player_name=player.name,
+                                position=position,
+                                defeated_rivals=1)
+                            )
+                            position += 1
                     position = self.add_if_not_exist_and_return_position(right[j], position)
                     lista[k] = right[j]
                     j += 1
