@@ -64,5 +64,21 @@ def instance_six():
         PlayerRecord(name="C", previous_position=4),
         PlayerRecord(name="D", previous_position=3),
         PlayerRecord(name="E", previous_position=1)
+    ]
 
+
+def instance_seven():
+    # A,5|B,11|C,2|D,9|E,3|F,10|G,7|H,4|I,6|J,8|K,1
+    return [
+        PlayerRecord(name="A", previous_position=5),
+        PlayerRecord(name="B", previous_position=11),
+        PlayerRecord(name="C", previous_position=2),
+        PlayerRecord(name="D", previous_position=9),
+        PlayerRecord(name="E", previous_position=3),
+        PlayerRecord(name="F", previous_position=10),
+        PlayerRecord(name="G", previous_position=7),
+        PlayerRecord(name="H", previous_position=4),
+        PlayerRecord(name="I", previous_position=6),
+        PlayerRecord(name="J", previous_position=8),
+        PlayerRecord(name="K", previous_position=1),
     ]
