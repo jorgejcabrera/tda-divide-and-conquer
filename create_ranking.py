@@ -52,14 +52,16 @@ class CreatePlayersRanking:
             while i < len(left) and j < len(right):
                 if left[i].previous_position < right[j].previous_position:
                     lista[k] = left[i]
-                    self.ranking.add_if_not_exist(left[i].name, position)
+                    if not self.ranking.exist(left[i].name):
+                        self.ranking.add(Rank(player_name=left[i].name, position=position, defeated_rivals=0))
                     position += 1
                     i += 1
                 else:
                     for player in left[i:]:
                         self.ranking.defeat_a_rival(player.name, position)
                         position += 1
-                    self.ranking.add_if_not_exist(right[j].name, position)
+                    if not self.ranking.exist(right[j].name):
+                        self.ranking.add(Rank(player_name=right[j].name, position=position, defeated_rivals=0))
                     position += 1
                     lista[k] = right[j]
                     j += 1
@@ -67,14 +69,16 @@ class CreatePlayersRanking:
 
             while i < len(left):
                 lista[k] = left[i]
-                self.ranking.add_if_not_exist(left[i].name, position)
+                if not self.ranking.exist(left[i].name):
+                    self.ranking.add(Rank(player_name=left[i].name, position=position, defeated_rivals=0))
                 position += 1
                 i += 1
                 k += 1
 
             while j < len(right):
                 lista[k] = right[j]
-                self.ranking.add_if_not_exist(right[j].name, position)
+                if not self.ranking.exist(right[j].name):
+                    self.ranking.add(Rank(player_name=right[j].name, position=position, defeated_rivals=0))
                 position = position + 1
                 j += 1
                 k += 1

@@ -9,14 +9,8 @@ class Ranking:
     def add(self, rank):
         self.ranks[rank.player_name] = rank
 
-    # TODO refactor esta raro esto, debería chequearse si existe por fuera y luego agregar
-    def add_if_not_exist(self, player_name, position):
-        if player_name not in self.ranks:
-            self.ranks[player_name] = Rank(
-                player_name=player_name,
-                position=position,
-                defeated_rivals=0
-            )
+    def exist(self, player_name):
+        return player_name in self.ranks
 
     # TODO refactor solo debería incrementar la cantidad de rivales vencidos
     def defeat_a_rival(self, player_name, position):
