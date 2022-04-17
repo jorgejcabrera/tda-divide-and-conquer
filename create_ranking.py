@@ -17,6 +17,16 @@ class CreatePlayersRanking:
     def __init__(self):
         self.ranking = Ranking()
 
+    def add_if_not_exist_and_return_position(self, player, position):
+        if not self.ranking.exist(player.name):
+            self.ranking.add(Rank(
+                player_name=player.name,
+                position=position,
+                defeated_rivals=0)
+            )
+            position += 1
+        return position
+
     # #
     # complejidad temporal de O(n^2)
     # #
@@ -32,6 +42,9 @@ class CreatePlayersRanking:
             rankings.add(rank)
         return rankings
 
+    # #
+    # complejidad temporal de O(n/2)^2
+    # #
     def execute_by_divide_and_conquer(self, lista):
         return self.divide_and_conquer(lista, 0)
 
@@ -52,34 +65,26 @@ class CreatePlayersRanking:
             while i < len(left) and j < len(right):
                 if left[i].previous_position < right[j].previous_position:
                     lista[k] = left[i]
-                    if not self.ranking.exist(left[i].name):
-                        self.ranking.add(Rank(player_name=left[i].name, position=position, defeated_rivals=0))
-                    position += 1
+                    position = self.add_if_not_exist_and_return_position(left[i], position)
                     i += 1
                 else:
                     for player in left[i:]:
                         self.ranking.defeat_a_rival(player.name, position)
                         position += 1
-                    if not self.ranking.exist(right[j].name):
-                        self.ranking.add(Rank(player_name=right[j].name, position=position, defeated_rivals=0))
-                    position += 1
+                    position = self.add_if_not_exist_and_return_position(right[j], position)
                     lista[k] = right[j]
                     j += 1
                 k += 1
 
             while i < len(left):
                 lista[k] = left[i]
-                if not self.ranking.exist(left[i].name):
-                    self.ranking.add(Rank(player_name=left[i].name, position=position, defeated_rivals=0))
-                position += 1
+                position = self.add_if_not_exist_and_return_position(left[i], position)
                 i += 1
                 k += 1
 
             while j < len(right):
                 lista[k] = right[j]
-                if not self.ranking.exist(right[j].name):
-                    self.ranking.add(Rank(player_name=right[j].name, position=position, defeated_rivals=0))
-                position = position + 1
+                position = self.add_if_not_exist_and_return_position(right[j], position)
                 j += 1
                 k += 1
 
