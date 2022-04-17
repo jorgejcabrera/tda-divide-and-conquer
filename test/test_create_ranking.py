@@ -1,12 +1,12 @@
 from unittest import TestCase
 
-from create_players_ranking import CreatePlayersRanking
+from create_ranking import CreatePlayersRanking
 from rank.rank import Rank
 from test.player_record_factory import instance_one, instance_two, instance_three, instance_four, instance_five, \
     instance_six, instance_seven
 
 
-class TestCreatePlayersRanking(TestCase):
+class TestCreateRanking(TestCase):
 
     # A,3|B,4|C,2|D,8|E,6|F,5
     def test_using_brute_force_with_instance_one(self):
