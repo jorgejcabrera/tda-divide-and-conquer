@@ -1,4 +1,5 @@
 from player.player_record import PlayerRecord
+import random
 
 
 def instance_one():
@@ -82,3 +83,12 @@ def instance_seven():
         PlayerRecord(name="J", previous_position=8),
         PlayerRecord(name="K", previous_position=1),
     ]
+
+
+def with_size(size):
+    list_of_previous_positions = list(range(size))
+    random.shuffle(list_of_previous_positions)
+    player_records = []
+    for previous_position in list_of_previous_positions:
+        player_records.append(PlayerRecord(name=str(previous_position + 1), previous_position=previous_position + 1))
+    return player_records

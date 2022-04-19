@@ -3,7 +3,7 @@ from unittest import TestCase
 from create_ranking import CreatePlayersRanking
 from rank.rank import Rank
 from test.player_record_factory import instance_one, instance_two, instance_three, instance_four, instance_five, \
-    instance_six, instance_seven
+    instance_six, instance_seven, with_size
 
 
 class TestCreateRanking(TestCase):
@@ -230,3 +230,4 @@ class TestCreateRanking(TestCase):
         self.assertTrue(Rank(player_name="A", position=1, defeated_rivals=1) == ranking.get_rank(1))
         self.assertTrue(Rank(player_name="B", position=2, defeated_rivals=1) == ranking.get_rank(2))
         self.assertTrue(Rank(player_name="C", position=3, defeated_rivals=0) == ranking.get_rank(3))
+
