@@ -15,9 +15,7 @@ class TestPerformanceOfRankingCreation(TestCase):
 
     def test_measure_of_brute_performance_with_15000_players(self):
         # given
-        players_record = with_size(10000)
         use_case = CreatePlayersRanking()
-        z_divide_and_conquer = []
 
         # when
         amount_of_players = 100
