@@ -3,6 +3,7 @@ class Rank:
     def __init__(self, player_name, position, defeated_rivals):
         self.player_name = player_name
         self.position = position
+        # TODO revisar el nombre de la variable
         self.defeated_rivals = defeated_rivals
 
     def __repr__(self) -> str:
@@ -10,6 +11,9 @@ class Rank:
 
     def defeat_a_rival(self):
         self.defeated_rivals += 1
+
+    def increase_wins_by(self, wins):
+        self.defeated_rivals += wins
 
     def __eq__(self, other):
         return (

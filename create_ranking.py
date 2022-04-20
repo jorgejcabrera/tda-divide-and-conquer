@@ -71,7 +71,7 @@ class CreatePlayersRanking:
                     # TODO move the for loop to a method with this responsabilitie
                     for player in left[i:]:
                         if self.ranking.exist(player.name):
-                            self.ranking.increase_wins_of(player.name)
+                            self.ranking.increase_wins_by(player.name, 1)
                         else:
                             self.ranking.add(Rank(
                                 player_name=player.name,
