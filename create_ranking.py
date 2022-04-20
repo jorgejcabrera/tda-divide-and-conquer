@@ -17,12 +17,12 @@ class CreatePlayersRanking:
     def __init__(self):
         self.ranking = Ranking()
 
-    def add_if_not_exist_and_return_position(self, player, position):
+    def add_if_not_exist_with_wins_and_return_position(self, player, position, wins):
         if not self.ranking.exist(player.name):
             self.ranking.add(Rank(
                 player_name=player.name,
                 position=position,
-                defeated_rivals=0)
+                defeated_rivals=wins)
             )
             position += 1
         return position
@@ -60,12 +60,13 @@ class CreatePlayersRanking:
             i = 0
             j = 0
             k = 0
+            increase = 0
 
             position = offset + 1
             while i < len(left) and j < len(right):
                 if left[i].previous_position < right[j].previous_position:
                     lista[k] = left[i]
-                    position = self.add_if_not_exist_and_return_position(left[i], position)
+                    position = self.add_if_not_exist_with_wins_and_return_position(left[i], position, 0)
                     i += 1
                 else:
                     # TODO move the for loop to a method with this responsabilitie
@@ -79,20 +80,20 @@ class CreatePlayersRanking:
                                 defeated_rivals=1)
                             )
                             position += 1
-                    position = self.add_if_not_exist_and_return_position(right[j], position)
+                    position = self.add_if_not_exist_with_wins_and_return_position(right[j], position, 0)
                     lista[k] = right[j]
                     j += 1
                 k += 1
 
             while i < len(left):
                 lista[k] = left[i]
-                position = self.add_if_not_exist_and_return_position(left[i], position)
+                position = self.add_if_not_exist_with_wins_and_return_position(left[i], position, 0)
                 i += 1
                 k += 1
 
             while j < len(right):
                 lista[k] = right[j]
-                position = self.add_if_not_exist_and_return_position(right[j], position)
+                position = self.add_if_not_exist_with_wins_and_return_position(right[j], position, 0)
                 j += 1
                 k += 1
 
