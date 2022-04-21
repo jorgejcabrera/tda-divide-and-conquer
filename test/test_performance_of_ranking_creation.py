@@ -13,6 +13,7 @@ def current_milli_time():
 
 class TestPerformanceOfRankingCreation(TestCase):
 
+    # TODO revisar nombre de test
     def test_measure_of_brute_performance_with_15000_players(self):
         # given
         use_case = CreatePlayersRanking()
@@ -22,24 +23,36 @@ class TestPerformanceOfRankingCreation(TestCase):
         x = []
         y_brute_force = []
         z_divide_and_conquer = []
+        j_divide_and_conquer = []
+
         while amount_of_players <= 15000:
             players_record = with_size(amount_of_players)
 
+            # brute force
             brute_force_start_time = current_milli_time()
             use_case.execute_by_brute_force(players_record)
             brute_force_total_time = current_milli_time() - brute_force_start_time
             y_brute_force.append(brute_force_total_time)
 
+            # divide and conquer v1
             divide_and_conquer_start_time = current_milli_time()
             use_case.execute_by_divide_and_conquer(players_record)
             divide_and_conquer_total_time = current_milli_time() - divide_and_conquer_start_time
             z_divide_and_conquer.append(divide_and_conquer_total_time)
 
+            # divide and conquer v2
+            divide_and_conquer_v2_start_time = current_milli_time()
+            use_case.execute_by_divide_and_conquer(players_record, 'V2')
+            divide_and_conquer_v2_total_time = current_milli_time() - divide_and_conquer_v2_start_time
+            j_divide_and_conquer.append(divide_and_conquer_v2_total_time)
+
             x.append(amount_of_players)
             amount_of_players = amount_of_players + 500
 
-        plt.plot(x, y_brute_force)
-        plt.plot(x, z_divide_and_conquer)
+        plt.plot(x, y_brute_force, label='brute_force')
+        plt.plot(x, z_divide_and_conquer, label='divide_and_conquer_v1')
+        plt.plot(x, j_divide_and_conquer, label='divide_and_conquer_v2')
+        plt.legend(loc='upper center')
 
         # naming the x axis
         plt.xlabel('Players')

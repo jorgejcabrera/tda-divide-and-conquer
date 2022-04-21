@@ -32,6 +32,18 @@ class TestCreateRanking(TestCase):
         # then
         self.then_the_expected_ranking_for_instance_one_was_created(ranking)
 
+    # A,3|B,4|C,2|D,8|E,6|F,5
+    def test_using_divide_and_conquer_v2_with_instance_one(self):
+        # given
+        players_record = instance_one()
+        use_case = CreatePlayersRanking()
+
+        # when
+        ranking = use_case.execute_by_divide_and_conquer(players_record, version='V2')
+
+        # then
+        self.then_the_expected_ranking_for_instance_one_was_created(ranking)
+
     # A,5|B,1|C,4|D,3|E,2|F,8|G,6|H,7
     def test_using_brute_force_with_instance_two(self):
         # given
@@ -123,7 +135,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record)
+        ranking = use_case.execute_by_divide_and_conquer(players_record, 'V2')
 
         # then
         self.then_the_expected_ranking_for_instance_five_was_created(ranking)
@@ -147,7 +159,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record)
+        ranking = use_case.execute_by_divide_and_conquer(players_record, 'V2')
 
         # then
         self.then_the_expected_ranking_for_instance_six_was_created(ranking)
@@ -160,6 +172,18 @@ class TestCreateRanking(TestCase):
 
         # when
         ranking = use_case.execute_by_divide_and_conquer(players_record)
+
+        # then
+        self.then_the_expected_ranking_for_instance_seven_was_created(ranking)
+
+    # A,5|B,11|C,2|D,9|E,3|F,10|G,7|H,4|I,6|J,8|K,1
+    def test_using_divide_and_conquer_v2_strategy_with_instance_seven(self):
+        # given
+        players_record = instance_seven()
+        use_case = CreatePlayersRanking()
+
+        # when
+        ranking = use_case.execute_by_divide_and_conquer(players_record, version='V2')
 
         # then
         self.then_the_expected_ranking_for_instance_seven_was_created(ranking)

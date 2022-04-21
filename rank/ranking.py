@@ -1,6 +1,3 @@
-from rank.rank import Rank
-
-
 class Ranking:
 
     def __init__(self):
