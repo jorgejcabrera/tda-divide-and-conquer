@@ -20,6 +20,8 @@ def sum(arr):
 class StrategyPerformanceService:
 
     def __init__(self):
+        self.step = 500
+        self.min_amount_of_players = 100
         self.use_case = CreatePlayersRanking()
         self.x = []
         self.y_brute_force_time = []
@@ -38,7 +40,7 @@ class StrategyPerformanceService:
         return divide_and_conquer_total_time
 
     def take_measurement_of(self, total_items):
-        amount_of_players = 100
+        amount_of_players = self.min_amount_of_players
 
         while amount_of_players <= total_items:
             players_record = with_size(amount_of_players)
@@ -50,7 +52,8 @@ class StrategyPerformanceService:
             self.y_divide_and_conquer_time.append(self.time_for_divide_and_conquer_strategy(players_record))
 
             self.x.append(amount_of_players)
-            amount_of_players = amount_of_players + 500
+
+            amount_of_players = amount_of_players + self.step
 
     def brute_force_total_time(self):
         return sum(self.y_brute_force_time)
