@@ -74,3 +74,8 @@ class StrategyPerformanceService:
 
         # function to show the plot
         plt.show()
+
+    def clear(self):
+        self.y_brute_force_time.clear()
+        self.x.clear()
+        self.y_divide_and_conquer_time.clear()
