@@ -3,7 +3,7 @@ from unittest import TestCase
 from create_ranking import CreatePlayersRanking
 from rank.rank import Rank
 from test.player_record_factory import instance_one, instance_two, instance_three, instance_four, instance_five, \
-    instance_six, instance_seven, with_size
+    instance_six, instance_seven
 
 
 class TestCreateRanking(TestCase):
