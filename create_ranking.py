@@ -48,16 +48,16 @@ class CreatePlayersRanking:
     # complejidad temporal de n O(log n)
     # #
     def execute_by_divide_and_conquer(self, lista):
-        return self.divide_and_conquer_v2(lista, 0)
+        return self.divide_and_conquer(lista, 0)
 
-    def divide_and_conquer_v2(self, lista, offset):
+    def divide_and_conquer(self, lista, offset):
         if len(lista) > 1:
             half = len(lista) // 2
             left = lista[:half]
             right = lista[half:]
 
-            self.divide_and_conquer_v2(left, offset)
-            self.divide_and_conquer_v2(right, offset + half)
+            self.divide_and_conquer(left, offset)
+            self.divide_and_conquer(right, offset + half)
 
             i = 0
             j = 0
