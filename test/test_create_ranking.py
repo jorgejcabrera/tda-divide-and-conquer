@@ -39,7 +39,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record, version='V2')
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_one_was_created(ranking)
@@ -135,7 +135,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record, 'V2')
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_five_was_created(ranking)
@@ -159,7 +159,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record, 'V2')
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_six_was_created(ranking)
@@ -183,7 +183,7 @@ class TestCreateRanking(TestCase):
         use_case = CreatePlayersRanking()
 
         # when
-        ranking = use_case.execute_by_divide_and_conquer(players_record, version='V2')
+        ranking = use_case.execute_by_divide_and_conquer(players_record)
 
         # then
         self.then_the_expected_ranking_for_instance_seven_was_created(ranking)
