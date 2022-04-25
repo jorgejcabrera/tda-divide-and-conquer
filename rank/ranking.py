@@ -1,5 +1,8 @@
 class Ranking:
 
+    def __repr__(self) -> str:
+        return self.ranks.__repr__()
+
     def __init__(self):
         self.ranks = dict()
 

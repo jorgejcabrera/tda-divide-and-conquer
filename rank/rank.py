@@ -7,7 +7,7 @@ class Rank:
         self.defeated_rivals = defeated_rivals
 
     def __repr__(self) -> str:
-        return f'[name:{self.player_name},position:{self.position},defeated_players:{self.defeated_rivals}]'
+        return f'[name:{self.player_name},position:{self.position},defeated_players:{self.defeated_rivals}]\n'
 
     def defeat_a_rival(self):
         self.defeated_rivals += 1
